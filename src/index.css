@@ -1,0 +1,209 @@
+@import './styles/adaptive-cards.css';
+@import 'adaptivecards/dist/adaptivecards.css';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fade-in animation for chat widget */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Pulse animation for the chat button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 123, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Pop-in animation for each chat bubble */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.message-bubble {
+  animation: popIn 0.3s ease;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* Chat bubbles styles */
+.bot-bubble {
+  background: #f0f4f8;
+  color: #1e3a8a;
+  font-weight: 500;
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.bot-question {
+  background: #edf4ff;
+  border-left: 4px solid #3b82f6;
+  color: #1e3a8a;
+  padding: 10px 14px;
+  border-radius: 0.65rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.user-bubble {
+  background: linear-gradient(to right, #1e3a8a, #2563eb);
+  color: white;
+  font-weight: 500;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+/* Make scrollbar nicer for chat window */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Wider Chatbot Window */
+.chatbot-container {
+  width: 460px !important;
+  max-width: 100%;
+  height: 600px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* Chat Header Styling */
+.chat-header {
+  height: 80px;
+  background: linear-gradient(to right, #085078, #85d8ce);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+/* Rounded Input Bar */
+input.chat-input {
+  border-radius: 1.75rem;
+  border: 2px solid #cbd5e1;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input.chat-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+/* Suggested Actions */
+
+.suggested-action-button:hover {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  border-color: #2563eb;
+  transform: scale(1.03);
+}
+
+
+/* Typing Indicator */
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  animation: typingBlink 1.5s infinite;
+}
+
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBlink {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.6; }
+  40% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Chat Input Box at Bottom */
+.chat-input-wrapper {
+  padding: 1rem;
+  background: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+/* Branding Colors */
+.bg-brand {
+  background: linear-gradient(to right, #085078, #85d8ce);
+}
+
+.text-brand {
+  color: #085078;
+}
+
+.border-brand {
+  border-color: #085078;
+}
